@@ -1,0 +1,46 @@
+<center>
+<div class="box_div_main_page">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/layout.css">
+</head>
+<body>
+<h1> Mike's ISBN Number Checking App </h1>
+<form method = "post" action = "main_page">
+<hr>
+<h3> Please enter the ISBN number that you want to check in the box below. </h3>
+<hr>
+<center>
+<input type="text" id="isbn" name = "isbn_number_input" placeholder="Verify ISBN" required onfocus>
+</center>
+<br>
+<input class = "button" type = "submit" value = "Verify ISBN" onclick>
+<br>
+<h3> The validity of the ISBN number is posted below. </h3>
+<hr>
+<div class="results">
+
+<%isbn_number_input.each_with_index do |n, i|%>
+    <%= n%> 
+	<%if result[i] == true%>
+    , Valid
+	<% else %>
+    , Invalid
+	<%end%>
+<br>
+<%end%>
+<table class="table table-hover">
+          <th>ISBN</th>
+          <th>Validity</th>
+      <% csv.each do |result| %>
+      <tbody data-link="row" class="rowlink">
+          <td><%= result["ISBN"] %></td>
+          <td><%= result["Validity"] %></td>
+  </tbody>
+<%end%>
+
+<hr>
+</div>
+</form>
+</body>
+</div>
+</center>
